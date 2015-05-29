@@ -1,5 +1,8 @@
 package net.yasite.testinfo;
 
+import net.yasite.riceball.BaseNewActivity;
+import net.yasite.riceball.BaseService;
+import net.yasite.riceball.net.HandlerHelp;
 import net.yasite.testinfo.entity.GoodListEntity;
 import android.content.Context;
 import android.os.Message;
