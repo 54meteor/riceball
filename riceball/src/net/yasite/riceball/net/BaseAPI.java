@@ -2,7 +2,6 @@ package net.yasite.riceball.net;
 
 import java.util.List;
 
-import net.yasite.riceball.BaseApplication;
 import net.yasite.riceball.net.httpclient.AHttpClient;
 import net.yasite.riceball.net.httpclient.HttpGetClient;
 import net.yasite.riceball.net.httpclient.HttpPostClent;
@@ -16,7 +15,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 public abstract class BaseAPI implements HttpAPI {
@@ -36,6 +34,8 @@ public abstract class BaseAPI implements HttpAPI {
 	protected Object response;
 	protected Object handleResult;
 	protected Class entity;
+	public static final boolean DEBUG = true;
+    public static final String TOKEN = "token";
 	
 	public BaseAPI(Context context){
 		this.context = context;
@@ -104,7 +104,7 @@ public abstract class BaseAPI implements HttpAPI {
 			return false;
 		}
 		// 请求参数验证
-		if(BaseApplication.DEBUG){
+		if(DEBUG){
 			System.out.println("请求参数:" +  getMethod());
 		}
 		httpClient.doRequest(this);
@@ -119,7 +119,7 @@ public abstract class BaseAPI implements HttpAPI {
 			}else{
 				json = new JSONObject(response.toString());
 			}
-			if(BaseApplication.DEBUG){
+			if(DEBUG){
 				System.out.println("返回结果:" + json.toString());
 			}
 			setHandleResult(handlerResult(json));
@@ -197,22 +197,5 @@ public abstract class BaseAPI implements HttpAPI {
 	
 	public Object getRequestParamToString(){
 		return this.paramStr;
-	}
-	public void saveToken(String nameValuePairs){
-		prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		prefs.edit().putString(BaseApplication.TOKEN, nameValuePairs).commit();
-		
-	}
-	public String getToken(){
-		prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		return prefs.getString(BaseApplication.TOKEN, "");
-	}
-
-	public SharedPreferences getPrefs() {
-		return prefs;
-	}
-
-	public void setPrefs(SharedPreferences prefs) {
-		this.prefs = prefs;
 	}
 }
