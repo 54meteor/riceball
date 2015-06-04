@@ -14,8 +14,6 @@ public class BaseApplication extends Application{
      * It is possible to keep a static reference across the
      * application of the image loader.
      */
-    public static final boolean DEBUG = true;
-    public static final String TOKEN = "token";
     public static ImageLoader mImageLoader = ImageLoader.getInstance();
 	@Override
 	public void onCreate(){
