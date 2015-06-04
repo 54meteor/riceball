@@ -1,5 +1,8 @@
 package net.yasite.riceball;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -95,5 +98,8 @@ public abstract class BaseNewActivity extends FragmentActivity implements Activi
 		if(pb != null){
 			pb.setVisibility(View.GONE);
 		}
+	}
+	public NameValuePair getValue(String key,String value){
+		return new BasicNameValuePair(key, value);
 	}
 }

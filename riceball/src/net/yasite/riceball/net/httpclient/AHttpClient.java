@@ -67,7 +67,6 @@ public abstract class AHttpClient {
 			String content,BaseAPI param) throws Exception{
 		try {
 			int statusCode = response.getStatusLine().getStatusCode();
-			System.out.println(statusCode);
 			if (statusCode == HttpStatus.SC_OK) {
 				content = EntityUtils.toString(response.getEntity(), "utf-8");
 				if (content == null || "".equals(content)) {
