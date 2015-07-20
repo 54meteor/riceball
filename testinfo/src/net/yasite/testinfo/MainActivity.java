@@ -55,6 +55,7 @@ public class MainActivity extends BaseNewActivity  implements OnItemClickListene
 		list.add(setEntity("get请求", GetActivity.class));
 		list.add(setEntity("post请求", PostActivity.class));
 		list.add(setEntity("upload请求", UploadActivity.class));
+		list.add(setEntity("下载", DownloadActivity.class));
 	}
 	private FunctionEntity setEntity(String name,Class act){
 		FunctionEntity entity = new FunctionEntity();

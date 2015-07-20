@@ -34,6 +34,10 @@ public abstract class BaseAPI implements HttpAPI {
 	protected Object response;
 	protected Object handleResult;
 	protected Class entity;
+	public static final int GET = 0x01;
+	public static final int POST = 0x02;
+	public static final int UPLOAD = 0x03;
+	protected int type = GET;
 	public static final boolean DEBUG = true;
     public static final String TOKEN = "token";
 	
@@ -47,6 +51,16 @@ public abstract class BaseAPI implements HttpAPI {
 		this.entity = entity;
 	}
 	
+	
+	
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	public HttpResponse getRes() {
 		return res;
 	}
@@ -82,6 +96,18 @@ public abstract class BaseAPI implements HttpAPI {
 	public BaseAPI setEntity(Class entity) {
 		this.entity = entity;
 		return this;
+	}
+	
+	public boolean request() throws Exception{
+		switch (type) {
+		case GET:
+			return doGet();
+		case POST:
+			return doPost();
+		case UPLOAD:
+			return doUpload();
+		}
+		return false;
 	}
 
 	public boolean doUpload() throws Exception {

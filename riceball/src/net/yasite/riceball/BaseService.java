@@ -12,20 +12,14 @@ import android.content.Context;
 
 public class BaseService {
 	
-	public static Object getData(Context context,
-			String url,Class entity){
-		return getData(context, url, entity, null);
-	}
-	
-	public static Object getData(Context context,
-			String url,Class entity,DataProcessing processing){
-		BaseAPI api = new RequestAPI(context)
-						.setMethod(url)
-						.setEntity(entity);
+
+	public static Object getData(RequestEntity request){
+		BaseAPI api = setAPI(request);
 		try {
-			if(api.doGet()){
-				if(processing != null){
-					return processing.processing(api.getHandleResult());
+			if(api.request()){
+				if(request.getProcessing() != null){
+					return request.getProcessing()
+							.processing(api.getHandleResult());
 				}
 				return api.getHandleResult();
 			}
@@ -37,10 +31,24 @@ public class BaseService {
 		return null;
 	}
 	
-	public static Object postData(Context context,String url,
-			Class entity,List<NameValuePair> list){
-		return postData(context, url, entity, list, null);
+	protected static BaseAPI setAPI(RequestEntity reqeust){
+		if(reqeust.getApi() != null){
+			return reqeust.getApi();
+		}else{
+			BaseAPI api = new RequestAPI(
+					reqeust.getContext(), reqeust.getUrl(), 
+					reqeust.getEntity());
+			api.setType(reqeust.getType());
+			api.setValuePair(reqeust.getList());
+			api.setFileList(reqeust.getFileList());
+			return api;
+		}
 	}
+	
+//	public static Object postData(Context context,String url,
+//			Class entity,List<NameValuePair> list){
+//		return postData(context, url, entity, list, null);
+//	}
 	
 	public static Object postData(Context context,String url,
 			Class entity,List<NameValuePair> list,DataProcessing processing){

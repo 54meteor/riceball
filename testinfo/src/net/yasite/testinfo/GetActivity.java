@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Message;
 import net.yasite.riceball.BaseNewActivity;
 import net.yasite.riceball.BaseService;
+import net.yasite.riceball.RequestEntity;
 import net.yasite.riceball.net.HandlerHelp;
 import net.yasite.testinfo.constant.APIUrl;
 import net.yasite.testinfo.entity.GoodListEntity;
@@ -50,8 +51,13 @@ public class GetActivity extends BaseNewActivity {
 		@Override
 		public void doTask(Message msg) throws Exception {
 			// TODO Auto-generated method stub
-			list = (GoodListEntity)BaseService.getData(context, 
-					APIUrl.GET + "/?a=1&b=2",GoodListEntity.class);
+			RequestEntity entity = new RequestEntity();
+			entity.setContext(context);
+			entity.setUrl(APIUrl.GET + "/?a=1&b=2");
+			entity.setEntity(GoodListEntity.class);
+//			list = (GoodListEntity)BaseService.getData(context, 
+//					APIUrl.GET + "/?a=1&b=2",GoodListEntity.class);
+			list = (GoodListEntity)BaseService.getData(entity);
 		}
 
 		@Override
