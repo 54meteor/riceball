@@ -59,20 +59,20 @@ public class UploadActivity extends BaseNewActivity {
 		public void doTask(Message msg) throws Exception {
 			// TODO Auto-generated method stub
 			List<NameValuePair> fileList = new ArrayList<NameValuePair>();
+			fileList.add(getValue("f1", "/mnt/sdcard/a.jpg"));
 			List<NameValuePair> list = new ArrayList<NameValuePair>();
 			list.add(getValue("a", "1"));
 			list.add(getValue("bb", "dafdf"));
 			list.add(getValue("cc", "8989898989"));
 			RequestEntity entity = new RequestEntity();
 			entity.setContext(context);
-			entity.setUrl(APIUrl.POST);
+			entity.setUrl(APIUrl.UPLOAD);
 			entity.setEntity(GoodListEntity.class);
 			entity.setList(list);
 			entity.setType(BaseAPI.UPLOAD);
 			entity.setFileList(fileList);
 			
 			//此集合用于构建需要上传的文件列表，key部分的为图片路径
-//			fileList.add(getValue("f1", ""));
 			//只上传文件调用以下方式
 			BaseService.getData(entity);
 			

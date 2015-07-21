@@ -6,4 +6,5 @@ public class APIUrl {
 	public final static String WEB_PATH = WEB_ROOT + API;
 	public final static String GET = WEB_PATH + "gettmp.php";
 	public final static String POST = WEB_PATH + "posttmp.php";
+	public final static String UPLOAD = WEB_PATH + "upload.php";
 }
