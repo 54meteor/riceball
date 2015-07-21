@@ -55,6 +55,9 @@
         <activity 
             android:name=".UploadActivity"
             />
+        <activity 
+            android:name=".DownloadActivity"
+            />
     </application>
 
 </manifest>

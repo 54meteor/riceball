@@ -63,6 +63,7 @@ public class PostActivity extends BaseNewActivity {
 			List<NameValuePair> list = new ArrayList<NameValuePair>();
 			list.add(getValue("a", "1"));
 			list.add(getValue("bb", "dafdf"));
+			list.add(getValue("cc", "8989898989"));
 			RequestEntity entity = new RequestEntity();
 			entity.setContext(context);
 			entity.setUrl(APIUrl.POST);

@@ -55,8 +55,6 @@ public class GetActivity extends BaseNewActivity {
 			entity.setContext(context);
 			entity.setUrl(APIUrl.GET + "/?a=1&b=2");
 			entity.setEntity(GoodListEntity.class);
-//			list = (GoodListEntity)BaseService.getData(context, 
-//					APIUrl.GET + "/?a=1&b=2",GoodListEntity.class);
 			list = (GoodListEntity)BaseService.getData(entity);
 		}
 
