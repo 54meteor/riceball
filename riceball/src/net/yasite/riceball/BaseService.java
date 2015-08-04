@@ -1,14 +1,7 @@
 package net.yasite.riceball;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.yasite.riceball.net.BaseAPI;
 import net.yasite.riceball.net.RequestAPI;
-
-import org.apache.http.NameValuePair;
-
-import android.content.Context;
 
 public class BaseService {
 	
