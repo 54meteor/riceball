@@ -72,8 +72,8 @@ public class UploadActivity extends BaseNewActivity {
 			entity.setType(BaseAPI.UPLOAD);
 			entity.setFileList(fileList);
 			
-			//╢к╪╞╨осцсз╧╧╫╗пХр╙ио╢╚╣днд╪Чап╠Мё╛key╡©╥ж╣дн╙м╪ф╛б╥╬╤
-			//ж╩ио╢╚нд╪Ч╣Всцртоб╥╫й╫
+			//Ф╜╓И⌡├Е░┬Г■╗Д╨▌Ф·└Е╩╨И°─Х╕│Д╦┼Д╪═Г └Ф√┤Д╩╤Е┬≈Х║╗О╪▄keyИ┐╗Е┬├Г └Д╦╨Е⌡╬Г┴┤Х╥╞Е╬└
+			//Е▐╙Д╦┼Д╪═Ф√┤Д╩╤Х╟┐Г■╗Д╩╔Д╦▀Ф√╧Е╪▐
 			BaseService.getData(entity);
 			
 		}

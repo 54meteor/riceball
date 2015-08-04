@@ -52,10 +52,10 @@ public class MainActivity extends BaseNewActivity  implements OnItemClickListene
 	 
 	private void setList(){
 		list = new ArrayList<FunctionEntity>();
-		list.add(setEntity("getÇëÇó", GetActivity.class));
-		list.add(setEntity("postÇëÇó", PostActivity.class));
-		list.add(setEntity("uploadÇëÇó", UploadActivity.class));
-		list.add(setEntity("ÏÂÔØ", DownloadActivity.class));
+		list.add(setEntity("getè¯·æ±‚", GetActivity.class));
+		list.add(setEntity("postè¯·æ±‚", PostActivity.class));
+		list.add(setEntity("uploadè¯·æ±‚", UploadActivity.class));
+		list.add(setEntity("ä¸‹è½½", DownloadActivity.class));
 	}
 	private FunctionEntity setEntity(String name,Class act){
 		FunctionEntity entity = new FunctionEntity();

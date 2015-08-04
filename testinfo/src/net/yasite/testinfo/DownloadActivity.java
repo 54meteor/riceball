@@ -20,8 +20,8 @@ public class DownloadActivity extends Activity {
     private EditText downloadpathText;
     private TextView resultView;
     private ProgressBar progressBar;
-    //µ±Handler±»´´½¨»á¹ØÁªµ½´´½¨ËüµÄµ±Ç°Ïß³ÌµÄÏûÏ¢¶ÓÁĞ£¬¸ÃÀàÓÃÓÚÍùÏûÏ¢¶ÓÁĞ·¢ËÍÏûÏ¢
-    //ÏûÏ¢¶ÓÁĞÖĞµÄÏûÏ¢ÓÉµ±Ç°Ïß³ÌÄÚ²¿½øĞĞ´¦Àí
+    //å½“Handlerè¢«åˆ›å»ºä¼šå…³è”åˆ°åˆ›å»ºå®ƒçš„å½“å‰çº¿ç¨‹çš„æ¶ˆæ¯é˜Ÿåˆ—ï¼Œè¯¥ç±»ç”¨äºå¾€æ¶ˆæ¯é˜Ÿåˆ—å‘é€æ¶ˆæ¯
+    //æ¶ˆæ¯é˜Ÿåˆ—ä¸­çš„æ¶ˆæ¯ç”±å½“å‰çº¿ç¨‹å†…éƒ¨è¿›è¡Œå¤„ç†
     private Handler handler = new Handler(){
 
 		@Override
@@ -66,24 +66,24 @@ public class DownloadActivity extends Activity {
 			}
 		});
     }
-    //Ö÷Ïß³Ì(UIÏß³Ì)
-    //ÒµÎñÂß¼­ÕıÈ·£¬µ«ÊÇ¸Ã³ÌĞòÔËĞĞµÄÊ±ºòÓĞÎÊÌâ
-    //¶ÔÓÚÏÔÊ¾¿Ø¼şµÄ½çÃæ¸üĞÂÖ»ÊÇÓÉUIÏß³Ì¸ºÔğ£¬Èç¹ûÊÇÔÚ·ÇUIÏß³Ì¸üĞÂ¿Ø¼şµÄÊôĞÔÖµ£¬¸üĞÂºóµÄÏÔÊ¾½çÃæ²»»á·´Ó³µ½ÆÁÄ»ÉÏ
+    //ä¸»çº¿ç¨‹(UIçº¿ç¨‹)
+    //ä¸šåŠ¡é€»è¾‘æ­£ç¡®ï¼Œä½†æ˜¯è¯¥ç¨‹åºè¿è¡Œçš„æ—¶å€™æœ‰é—®é¢˜
+    //å¯¹äºæ˜¾ç¤ºæ§ä»¶çš„ç•Œé¢æ›´æ–°åªæ˜¯ç”±UIçº¿ç¨‹è´Ÿè´£ï¼Œå¦‚æœæ˜¯åœ¨éUIçº¿ç¨‹æ›´æ–°æ§ä»¶çš„å±æ€§å€¼ï¼Œæ›´æ–°åçš„æ˜¾ç¤ºç•Œé¢ä¸ä¼šåæ˜ åˆ°å±å¹•ä¸Š
     private void download(final String path, final File savedir) {
     	System.out.println(path);
     	new Thread(new Runnable() {			
 			@Override
 			public void run() {
 				HttpDownload loader = new HttpDownload(DownloadActivity.this, path, savedir, 3);
-		    	progressBar.setMax(loader.getFileSize());//ÉèÖÃ½ø¶ÈÌõµÄ×î´ó¿Ì¶ÈÎªÎÄ¼şµÄ³¤¶È
+		    	progressBar.setMax(loader.getFileSize());//è®¾ç½®è¿›åº¦æ¡çš„æœ€å¤§åˆ»åº¦ä¸ºæ–‡ä»¶çš„é•¿åº¦
 				try {
 					loader.download(new DownloadProgressListener() {
 						@Override
-						public void onDownloadSize(int size) {//ÊµÊ±»ñÖªÎÄ¼şÒÑ¾­ÏÂÔØµÄÊı¾İ³¤¶È
+						public void onDownloadSize(int size) {//å®æ—¶è·çŸ¥æ–‡ä»¶å·²ç»ä¸‹è½½çš„æ•°æ®é•¿åº¦
 							Message msg = new Message();
 							msg.what = 1;
 							msg.getData().putInt("size", size);
-							handler.sendMessage(msg);//·¢ËÍÏûÏ¢
+							handler.sendMessage(msg);//å‘é€æ¶ˆæ¯
 						}
 					});
 				} catch (Exception e) {
